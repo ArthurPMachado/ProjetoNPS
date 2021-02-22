@@ -34,7 +34,9 @@
 			"@typescript-eslint/parser": [".ts", ".tsx"]
 		},
 		"import/resolver": {
-			"typescript": {}
+			"node": {
+				"extensions": [".js", ".ts"]
+			}
 		}
 	}
 }
