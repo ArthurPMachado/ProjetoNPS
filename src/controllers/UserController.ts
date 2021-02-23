@@ -8,6 +8,14 @@ class UserController {
 
     const userRepository = getRepository(User);
 
+    const userAlreadyExists = await userRepository.findOne({ email });
+
+    if (userAlreadyExists) {
+      return response.status(400).json({
+        error: 'Usuário já existe!',
+      });
+    }
+
     const user = userRepository.create({ name, email });
 
     await userRepository.save(user);
