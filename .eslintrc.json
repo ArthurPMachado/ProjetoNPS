@@ -23,7 +23,7 @@
 		"no-unused-vars": "warn",
 		"radix": "warn",
 		"max-len": "warn",
-		"class-methods-use-this": "warn",
+		"class-methods-use-this": "off",
 		"camelcase": "off",
 		"import/prefer-default-export": "off",
 		"import/extensions": "off",
