@@ -1,0 +1,41 @@
+import nodemailer, { Transporter } from 'nodemailer';
+// import { Request, Response } from 'express';
+
+class SendMailService {
+  private client: Transporter;
+
+  constructor() {
+    nodemailer.createTestAccount()
+      .then((account) => {
+        const { host, port, secure } = account.smtp;
+
+        // Create a SMTP transporter object
+        const transporter = nodemailer.createTransport({
+          host,
+          port,
+          secure,
+          auth: {
+            user: account.user,
+            pass: account.pass,
+          },
+        });
+
+        this.client = transporter;
+      });
+  }
+
+  async execute(to: string, subject: string, body: string) {
+    const message = await this.client.sendMail({
+      to,
+      subject,
+      html: body,
+      from: 'NPS <noreplay@nps.com.br>',
+    });
+
+    console.log('Message sent: %s', message.messageId);
+    // Preview only available when sending through an Ethereal account
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+  }
+}
+
+export default SendMailService;
