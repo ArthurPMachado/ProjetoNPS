@@ -48,6 +48,8 @@ class SendMailController {
       name,
       title,
       description,
+      user_id: id,
+      link: process.env.URL_MAIL,
     };
 
     // Enviar email para o usuário
