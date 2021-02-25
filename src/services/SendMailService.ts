@@ -38,4 +38,4 @@ class SendMailService {
   }
 }
 
-export default SendMailService;
+export default new SendMailService();
