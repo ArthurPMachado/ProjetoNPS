@@ -8,7 +8,7 @@ class SurveysController {
     const { title, description } = request.body;
 
     const schema = yup.object().shape({
-      titel: yup.string().required(),
+      title: yup.string().required(),
       description: yup.string().email().required(),
     });
 
